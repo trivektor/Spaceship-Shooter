@@ -7,6 +7,7 @@ function Spaceship(options) {
   this.y = options.y;
   this.context = options.context;
   this.bullets = options.bullets;
+  this.fushion_shot = new Audio('fusion-shot.mp3');
 }
 
 Spaceship.prototype = {
@@ -26,5 +27,7 @@ Spaceship.prototype = {
               y : this.y
       })
     )
+    this.fushion_shot.pause();
+    this.fushion_shot.play();
   }
 }
