@@ -20,6 +20,7 @@ function Game(options) {
 }
 
 Game.prototype = {
+  constructor: Game,
   listenToKeyboardEvents: function() {
     window.addEventListener('keydown', this.keyboardHandler.bind(this), false);
   },

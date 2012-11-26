@@ -10,6 +10,7 @@ function Spaceship(options) {
 }
 
 Spaceship.prototype = {
+  constructor: Spaceship,
   width: 64,
   height: 64,
   image: spaceship_up,

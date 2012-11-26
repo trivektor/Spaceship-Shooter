@@ -11,6 +11,7 @@ function Bullet(options) {
 }
 
 Bullet.prototype = {
+  constructor: Bullet,
   width: 6,
   height: 6,
   color: 'yellow',
