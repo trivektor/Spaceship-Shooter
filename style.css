@@ -1,0 +1,8 @@
+#stage {
+  background: url('stars.gif') no-repeat scroll 0 50px;
+  transition: all 0.2s ease;
+}
+
+#stage:hover {
+  background-position: 0 0;
+}

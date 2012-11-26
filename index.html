@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spaceship Shooter</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <canvas id="stage" width="512" height="512">
+      Your browser is not capable of displaying this game
+    </canvas>
+    <script src="objects/spaceship.js"></script>
+    <script src="objects/bullet.js"></script>
+    <script src="objects/game.js"></script>
+    <script>
+      // Initialize the game
+      new Game({canvas: document.getElementById("stage")})
+    </script>
+  </body>
+</html>
