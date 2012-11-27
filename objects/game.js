@@ -1,7 +1,7 @@
 function Game(options) {
   var canvas  = options.canvas,
       context = canvas.getContext('2d'),
-      FPS     = 24;
+      FPS     = 119;
   
   this.context = context;
     
