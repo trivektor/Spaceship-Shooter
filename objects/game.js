@@ -46,25 +46,42 @@ Game.prototype = {
       b.draw();
     })
     
-    this.aliens.forEach(function(e) {
-      e.draw();
+    this.aliens.forEach(function(a) {
+      if (a.alive) {
+        a.draw();
+      }
     })
   },
+  hit: function(a, b) {
+    return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y
+  },
   update: function() {
+    var _this = this;
+
     this.spaceship.bullets.forEach(function(b) {
+      _this.aliens.forEach(function(a) {
+        if (_this.hit(a, b)) {
+          b.active = false;
+          a.alive = false;
+        }
+      })
       b.update();
     })
 
     this.spaceship.bullets = this.spaceship.bullets.filter(function(b) {
       return b.active;
     })
+
+    this.aliens = this.aliens.filter(function(a) {
+      return a.alive;
+    })
   },
   deployAliensAtStart: function() {
     this.aliens = [];
 
-    var startingX = 52,
-        startingY = 52,
-        alienCols = 8,
+    var startingX = 30,
+        startingY = 30,
+        alienCols = 7,
         alienRows = 3;
 
     for (var x=1; x <= alienCols; x++) {
@@ -72,8 +89,8 @@ Game.prototype = {
         this.aliens.push(
           new Alien({
             context: this.context,
-            x: startingX*x,
-            y: startingY*y
+            x: startingX + 68*(x-1),
+            y: startingY + 64*(y-1)
           })
         )
       }
