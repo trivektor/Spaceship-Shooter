@@ -59,7 +59,7 @@ Game.prototype = {
       _this.aliens.forEach(function(a) {
         if (b.hasHit(a)) {
           b.active = false;
-          a.alive = false;
+          a.die();
         }
       })
       b.update();

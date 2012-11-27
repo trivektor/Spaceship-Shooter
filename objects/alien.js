@@ -9,7 +9,7 @@ function Alien(options) {
   this.x = options.x;
   this.y = options.y;
   this.context = options.context;
-  this.image_state = 'normal'
+  this.state = 'normal'
 }
 
 Alien.prototype = {
@@ -18,17 +18,22 @@ Alien.prototype = {
   image_alt: alient_image_alt,
   width: 40,
   height: 30,
+  killed_sound: new Audio('sounds/invaderkilled.wav'),
   draw: function() {
     this.flap();
     this.context.drawImage(this.image, this.x, this.y);
   },
   flap: function() {
-    if (this.image_state === 'normal') {
+    if (this.state === 'normal') {
       this.image = alient_image_alt;
-      this.image_state = 'flap';
+      this.state = 'flap';
     } else {
       this.image = alien_image;
-      this.image_state = 'normal'
+      this.state = 'normal'
     }
+  },
+  die: function() {
+    this.killed_sound.play();
+    this.alive = false;
   }
 }
