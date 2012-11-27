@@ -1,6 +1,6 @@
 // Preload spaceship image
 var spaceship_up = new Image;
-spaceship_up.src = 'spaceship.png';
+spaceship_up.src = 'images/spaceship.png';
 
 function Spaceship(options) {
   this.x = options.x;

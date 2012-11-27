@@ -4,18 +4,13 @@ function Game(options) {
       FPS     = 24;
   
   this.context = context;
-  
-  this.spaceship = new Spaceship({
-    x: 224, 
-    y: 420, 
-    context: context,
-    bullets: [],
-  });
-  
+    
   this.width = canvas.width;
   this.height = canvas.height;
-  this.listenToKeyboardEvents();
   
+  this.initializeGame();
+  
+  // Main game loop
   setInterval(this.loop.bind(this), 1000/FPS)
 }
 
@@ -50,6 +45,10 @@ Game.prototype = {
     this.spaceship.bullets.forEach(function(b) {
       b.draw();
     })
+    
+    this.aliens.forEach(function(e) {
+      e.draw();
+    })
   },
   update: function() {
     this.spaceship.bullets.forEach(function(b) {
@@ -59,6 +58,39 @@ Game.prototype = {
     this.spaceship.bullets = this.spaceship.bullets.filter(function(b) {
       return b.active;
     })
+  },
+  deployAliensAtStart: function() {
+    this.aliens = [];
+
+    var startingX = 52,
+        startingY = 52,
+        alienCols = 8,
+        alienRows = 3;
+
+    for (var x=1; x <= alienCols; x++) {
+      for (var y=1; y <= alienRows; y++) {
+        this.aliens.push(
+          new Alien({
+            context: this.context,
+            x: startingX*x,
+            y: startingY*y
+          })
+        )
+      }
+    }
+  },
+  deploySpaceshipAtStart: function() {
+    this.spaceship = new Spaceship({
+      x: this.width/2 - Spaceship.prototype.width/2, 
+      y: this.height - Spaceship.prototype.height - 15, 
+      context: this.context,
+      bullets: [],
+    });
+  },
+  initializeGame: function() {
+    this.listenToKeyboardEvents();
+    this.deployAliensAtStart();
+    this.deploySpaceshipAtStart();
   },
   loop: function() {
     this.update();

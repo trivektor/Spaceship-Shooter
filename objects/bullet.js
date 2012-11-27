@@ -12,9 +12,9 @@ function Bullet(options) {
 
 Bullet.prototype = {
   constructor: Bullet,
-  width: 6,
-  height: 6,
-  color: 'yellow',
+  width: 4,
+  height: 4,
+  color: '#fff',
   inBounds: function() {
     return this.x >= 0 && this.x <= this.max_x && this.y >= 0 && this.y <= this.max_y;
   },
