@@ -29,5 +29,8 @@ Bullet.prototype = {
     this.y += this.yVelocity;
     
     this.active = this.active && this.inBounds();    
+  },
+  hasHit: function(object) {
+    return object.x < this.x + this.width && object.x + object.width > this.x && object.y < this.y + this.height && object.y + object.height > this.y
   }
 }

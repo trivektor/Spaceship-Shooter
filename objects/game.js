@@ -52,15 +52,12 @@ Game.prototype = {
       }
     })
   },
-  hit: function(a, b) {
-    return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y
-  },
   update: function() {
     var _this = this;
 
     this.spaceship.bullets.forEach(function(b) {
       _this.aliens.forEach(function(a) {
-        if (_this.hit(a, b)) {
+        if (b.hasHit(a)) {
           b.active = false;
           a.alive = false;
         }
