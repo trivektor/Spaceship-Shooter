@@ -7,13 +7,13 @@ function Spaceship(options) {
   this.y = options.y;
   this.context = options.context;
   this.bullets = options.bullets;
-  this.fushion_shot = new Audio('fusion-shot.mp3');
+  this.fushion_shot = new Audio('sounds/shoot.wav');
 }
 
 Spaceship.prototype = {
   constructor: Spaceship,
-  width: 64,
-  height: 64,
+  width: 48,
+  height: 32,
   image: spaceship_up,
   move: function() {
     this.context.drawImage(this.image, this.x, this.y)
